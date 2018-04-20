@@ -32,9 +32,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = kCLDistanceFilterNone
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: span)
-        
         mapView.showsUserLocation = true
     }
     
@@ -44,27 +41,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         guard let lat = latitudeTextField.text else {return}
         guard let long = LongitudeTextField.text else {return}
         
-        //    latitude = Double(lat)
-        //    longitude = Double(long)
-        
         if latitudeTextField.text != "" && LongitudeTextField.text != "" {
             
-            getLocatin(forLatitude: Double(lat)!, forLongitude: Double(long)!)
+        newLocation(forLatitude: Double(lat)!, forLongitude: Double(long)!)
             
         }
     }
     
     
-    
-    
-    func getLocatin(forLatitude: Double, forLongitude: Double) {
+    func newLocation(forLatitude: Double, forLongitude: Double) {
+        
         let span = MKCoordinateSpanMake(0.1, 0.01)
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: forLatitude, longitude: forLongitude), span: span)
-        
-        mapView.setRegion(region, animated: true)
-        
         let pinLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(forLatitude, forLongitude)
         let pinObject = MKPointAnnotation()
+        
+        mapView.setRegion(region, animated: true)
         
         pinObject.coordinate = pinLocation
         pinObject.title = "You entered"
@@ -75,20 +67,18 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let userLocation : CLLocation = locations[0] as CLLocation
-        locationManager.stopUpdatingLocation()
-        
         let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-        
         let span = MKCoordinateSpanMake(0.01, 0.01)
-        
         let region = MKCoordinateRegion(center: location, span: span)
+        
+        locationManager.stopUpdatingLocation()
         
         mapView.setRegion(region, animated: true)
     }
-
-    
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
+}
     
 
 
