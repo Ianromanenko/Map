@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,68 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rw1-LI-bHB">
+                                <rect key="frame" x="16" y="162" width="343" height="485"/>
+                            </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Latitude" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47h-Pa-IuN">
+                                <rect key="frame" x="36" y="33" width="302" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNc-w7-2a7">
+                                <rect key="frame" x="36" y="71" width="302" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WI8-Hv-B6L">
+                                <rect key="frame" x="130" y="109" width="115" height="45"/>
+                                <color key="backgroundColor" red="0.69019607843137254" green="0.88235294117647056" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z9R-D2-VNH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.78620989013313025" green="0.9388584409700339" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WI8-Hv-B6L" secondAttribute="trailing" constant="130" id="1Lz-dv-AID"/>
+                            <constraint firstItem="NNc-w7-2a7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="8eU-oD-1BH"/>
+                            <constraint firstItem="WI8-Hv-B6L" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="89" id="8hj-8i-5es"/>
+                            <constraint firstItem="NNc-w7-2a7" firstAttribute="top" secondItem="47h-Pa-IuN" secondAttribute="bottom" constant="8" id="8iE-yb-6Oi"/>
+                            <constraint firstItem="rw1-LI-bHB" firstAttribute="top" secondItem="WI8-Hv-B6L" secondAttribute="bottom" constant="8" id="Igi-Px-kOl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="47h-Pa-IuN" secondAttribute="trailing" constant="37" id="K4l-Ae-HIS"/>
+                            <constraint firstItem="47h-Pa-IuN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="OF6-xt-b3v"/>
+                            <constraint firstItem="NNc-w7-2a7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="51" id="Oma-0e-MIF"/>
+                            <constraint firstItem="WI8-Hv-B6L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="ZHq-zc-J0X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rw1-LI-bHB" secondAttribute="trailing" constant="16" id="c97-Fg-GrG"/>
+                            <constraint firstItem="WI8-Hv-B6L" firstAttribute="top" secondItem="NNc-w7-2a7" secondAttribute="bottom" constant="8" id="cqh-PG-ENM"/>
+                            <constraint firstItem="rw1-LI-bHB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="142" id="cyT-3w-7x0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NNc-w7-2a7" secondAttribute="trailing" constant="37" id="jeT-4X-GSh"/>
+                            <constraint firstItem="47h-Pa-IuN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="pTt-Zi-SBR"/>
+                            <constraint firstItem="rw1-LI-bHB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="pwx-E0-3vw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rw1-LI-bHB" secondAttribute="bottom" constant="20" id="xYG-eh-NMz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="LongitudeTextField" destination="NNc-w7-2a7" id="yxK-B6-gCO"/>
+                        <outlet property="latitudeTextField" destination="47h-Pa-IuN" id="ti6-yv-Zak"/>
+                        <outlet property="mapView" destination="rw1-LI-bHB" id="76D-XU-8pS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
