@@ -75,8 +75,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         mapView.setRegion(region, animated: true)
     }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        clearShake()
+    }
+    
+    func clearShake() {
+        latitudeTextField.text = ""
+        LongitudeTextField.text = ""
+        print("erver")
+        mapView.delegate = self
+        newLocation(forLatitude: 43, forLongitude: -80)
     }
 }
     
